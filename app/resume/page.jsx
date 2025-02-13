@@ -61,7 +61,7 @@ const experience = {
     items: [
         {
             company: "Tech Solutions Inc.",
-            position: "Full Stacxk Developer",
+            position: "Full Stack Developer",
             duration: "2022 - Present",
         },
         {
