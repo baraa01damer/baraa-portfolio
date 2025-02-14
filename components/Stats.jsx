@@ -1,27 +1,48 @@
 "use client";
 
 import CountUp from "react-countup";
+import { useEffect, useState } from "react";
 
-const stats = [
-    {
-        num: 12,
-        text: "Years of Experience",
-    },
-    {
-        num: 26,
-        text: "Projects completed",
-    },
-    {
-        num: 8,
-        text: "Technologies mastered",
-    },
-    {
-        num: 500,
-        text: "Code commits",
-    },
-];
+const GITHUB_USERNAME = "Baraa01Damer";
 
+{/* get # of code commits from github */ }
 const Stats = () => {
+    const [commitCount, setCommitCount] = useState(0);
+
+    useEffect(() => {
+        const fetchCommitCount = async () => {
+            try {
+                const response = await fetch(
+                    `https://api.github.com/search/commits?q=author:${GITHUB_USERNAME}`,
+                    {
+                        headers: {
+                            Accept: "application/vnd.github.v3+json",
+                        },
+                    }
+                );
+                const data = await response.json();
+                if (data.total_count) {
+                    setCommitCount(data.total_count);
+                }
+            } catch (error) {
+                console.error("Error fetching commit count:", error);
+            }
+        };
+
+        fetchCommitCount();
+    }, []);
+
+    const stats = [
+        {
+            num: 4,
+            text: "Projects completed",
+        },
+        {
+            num: commitCount || 100, // Fallback to this number if the API fails
+            text: "Code commits",
+        },
+    ];
+
     return (
         <section className="pt-4 pb-12 xl:pt-0 xl:pb-0">
             <div className="container mx-auto">
