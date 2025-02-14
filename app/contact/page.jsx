@@ -14,14 +14,9 @@ import {
     SelectValue,
 } from "@/components/ui/select";
 
-import { FaPhoneAlt, FaEnvelope, FaMapMarkerAlt } from "react-icons/fa";
+import { FaClock, FaEnvelope, FaMapMarkerAlt } from "react-icons/fa";
 
 const info = [
-    {
-        icon: <FaPhoneAlt />,
-        title: "Phone",
-        description: "(+1) XXX XXX XXXX",
-    },
     {
         icon: <FaEnvelope />,
         title: "Email",
@@ -29,8 +24,13 @@ const info = [
     },
     {
         icon: <FaMapMarkerAlt />,
-        title: "Address",
-        description: "address here",
+        title: "Location",
+        description: "Greater Los Angeles Area, USA",
+    },
+    {
+        icon: <FaClock />,
+        title: "Time Zone",
+        description: "Pacific Time (PST)",
     },
 ];
 
@@ -53,14 +53,14 @@ const Contact = () => {
                         <form className="flex flex-col gap-6 p-10 bg-[#27272c] rounded-xl">
                             <h3 className="text-4xl text-accent">Let's work together</h3>
                             <p className="text-white/60">
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eum nihil sapiente pariatur id totam.
+                                Interested in working together? Whether you have a project in mind, need a developer, or just want to connect, feel free to reach out. Let’s build something great!
                             </p>
                             {/* input */}
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                <Input type="firstname" placeholder="Firstname" />
-                                <Input type="lastname" placeholder="Lastname" />
-                                <Input type="email" placeholder="Email address" />
-                                <Input type="phone" placeholder="Phone number" />
+                                <Input type="firstname" placeholder="First Name" />
+                                <Input type="lastname" placeholder="Last Name" />
+                                <Input type="email" placeholder="Email" />
+                                <Input type="phone" placeholder="Phone (optional)" />
                             </div>
                             {/* select */}
                             <Select>
@@ -70,9 +70,8 @@ const Contact = () => {
                                 <SelectContent>
                                     <SelectGroup>
                                         <SelectLabel>Select a service</SelectLabel>
-                                        <SelectItem value="est">Web Development</SelectItem>
-                                        <SelectItem value="cst">UI/UX Design</SelectItem>
-                                        <SelectItem value="mst">Logo Design</SelectItem>
+                                        <SelectItem value="est">Freelancing</SelectItem>
+                                        <SelectItem value="cst">Other</SelectItem>
                                     </SelectGroup>
                                 </SelectContent>
                             </Select>

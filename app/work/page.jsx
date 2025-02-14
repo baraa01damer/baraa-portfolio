@@ -22,14 +22,14 @@ import WorkSliderBtns from "@/components/WorkSliderBtns";
 const projects = [
     {
         num: '01',
-        category: 'frontend',
-        title: 'project 1',
+        category: 'fullstack',
+        title: 'Storify',
         description:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cupiditate magnam modi.',
+            'Inventory management application that allows users to keep track of inventory items by adding or removing items and updating their quantities. Uses Next.js as the frontend framework, Material UI for the UI components, and Firebase as the backend service. ',
         stack: [{ name: 'Html 5' }, { name: "Css 3" }, { name: "Javascript" }],
         image: '/assets/work/thumb1.png',
-        live: "",
-        github: "",
+        live: "https://pantry-tracker-tau-five.vercel.app/",
+        github: "https://github.com/Baraa01Damer/Storify",
     },
     {
         num: '02',

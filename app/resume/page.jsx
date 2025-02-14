@@ -4,27 +4,39 @@ import {
     FaHtml5,
     FaCss3,
     FaJs,
-    aReact,
-    FaFigma,
     FaNodeJs,
-    FaReact
+    FaReact,
+    FaPython,
+    FaStripe,
+    FaSpotify
 } from "react-icons/fa";
 
-import { SiTailwindcss, SiNextdotjs } from "react-icons/si";
+import {
+    SiTailwindcss,
+    SiNextdotjs,
+    SiFirebase,
+    SiVercel,
+    SiMui,
+    SiShadcnui,
+    SiOpenai,
+    SiClerk,
+    SiTypescript,
+    SiSupabase
+} from "react-icons/si";
 
 // about data
 const about = {
     title: "About me",
-//    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+    //    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
     info: [
         {
             fieldName: "Name",
             fieldValue: "Baraa Damer",
         },
-//        {
-//            fieldName: "Experience",
-//            fieldValue: "12+ Years",
-//        },
+        //        {
+        //            fieldName: "Experience",
+        //            fieldValue: "12+ Years",
+        //        },
         {
             fieldName: "Email",
             fieldValue: "baraa01damer@gmail.com",
@@ -43,9 +55,9 @@ const about = {
 // experience data
 const experience = {
     icon: '/assets/resume/badge.svg',
-    title: 'My experience',
-//    description:
-//        "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+    title: 'My Experience',
+    //    description:
+    //        "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
     items: [
         {
             company: "Freelance",
@@ -63,12 +75,12 @@ const experience = {
 // education data
 const education = {
     icon: '/assets/resume/cap.svg',
-    title: 'My education',
-//    description:
-//        "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+    title: 'My Education',
+    //    description:
+    //        "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
     items: [
         {
-            institution: "California State University, Fullerton",
+            institution: "Cal State Fullerton",
             degree: "B.S. Computer Science",
             duration: "2022 - 2024",
         },
@@ -82,44 +94,108 @@ const education = {
 
 // skills data
 const skills = {
-    title: "My skills",
-//    description:
-//        "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-    skillList: [
+    title: "My Skills",
+    categories: [
         {
-            icon: <FaHtml5 />,
-            name: "html 5",
+            category: "Languages",
+            skillList: [
+                {
+                    icon: <FaHtml5 />,
+                    name: "HTML"
+                },
+                {
+                    icon: <FaCss3 />,
+                    name: "CSS"
+                },
+                {
+                    icon: <FaJs />,
+                    name: "JavaScript"
+                },
+                {
+                    icon: <FaPython />,
+                    name: "Python"
+                },
+                {
+                    icon: <SiTypescript />,
+                    name: "Typescript"
+                },
+            ],
         },
         {
-            icon: <FaCss3 />,
-            name: "css 3",
+            category: "Frameworks & Libraries",
+            skillList: [
+                {
+                    icon: <SiNextdotjs />,
+                    name: "Next.js"
+                },
+                {
+                    icon: <FaNodeJs />,
+                    name: "Node.js"
+                },
+                {
+                    icon: <FaReact />,
+                    name: "React"
+                },
+            ],
         },
         {
-            icon: <FaJs />,
-            name: "javascript",
+            category: "UI Libraries",
+            skillList: [
+                {
+                    icon: <SiMui />,
+                    name: "Material UI"
+                },
+                {
+                    icon: <SiShadcnui />,
+                    name: "shadcn/ui"
+                },
+                {
+                    icon: <SiTailwindcss />,
+                    name: "Tailwind CSS"
+                },
+            ],
         },
         {
-            icon: <FaReact />,
-            name: "react.js",
+            category: "APIs",
+            skillList: [
+                {
+                    icon: <SiClerk />,
+                    name: "Clerk API"
+                },
+                {
+                    icon: <SiOpenai />,
+                    name: "OpenAI API"
+                },
+                {
+                    icon: <FaSpotify />,
+                    name: "Spotify API"
+                },
+                {
+                    icon: <FaStripe />,
+                    name: "Stripe API"
+                },
+            ],
         },
         {
-            icon: <SiNextdotjs />,
-            name: "next.js",
+            category: "Hosting & Backend Services",
+            skillList: [
+                {
+                    icon: <SiFirebase />,
+                    name: "Firebase"
+                },
+                {
+                    icon: <SiSupabase />,
+                    name: "Supabase"
+                },
+                {
+                    icon: <SiVercel />,
+                    name: "Vercel"
+                },
+            ],
         },
-        {
-            icon: <SiTailwindcss />,
-            name: "tailwind.css",
-        },
-        {
-            icon: <FaNodeJs />,
-            name: "node.js",
-        },
-//        {
-//            icon: <FaFigma />,
-//            name: "figma",
-//        },
-    ]
+    ],
 };
+
 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 
@@ -152,7 +228,6 @@ const Resume = () => {
                         <TabsTrigger value="experience">Experience</TabsTrigger>
                         <TabsTrigger value="education">Education</TabsTrigger>
                         <TabsTrigger value="skills">Skills</TabsTrigger>
-                        <TabsTrigger value="about">About me</TabsTrigger>
                     </TabsList>
 
                     {/* content */}
@@ -230,26 +305,33 @@ const Resume = () => {
                                         {skills.description}
                                     </p>
                                 </div>
-                                <ul className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 xl:gap-[30px]">
-                                    {skills.skillList.map((skill, index) => {
-                                        return <li key={index}>
-                                            <TooltipProvider delayDuration={100}>
-                                                <Tooltip>
-                                                    <TooltipTrigger className="w-full h-[150px] bg-[#232329] rounded-xl flex justify-center items-center group">
-                                                        <div className="text-6xl group-hover:text-accent transition-all duration-300">
-                                                            {skill.icon}
-                                                        </div>
-                                                    </TooltipTrigger>
-                                                    <TooltipContent>
-                                                        <p className="capitalize">{skill.name}</p>
-                                                    </TooltipContent>
-                                                </Tooltip>
-                                            </TooltipProvider>
-                                        </li>;
-                                    })}
-                                </ul>
+
+                                {skills.categories.map((category, categoryIndex) => (
+                                    <div key={categoryIndex} className="mb-8">
+                                        <h4 className="text-2xl font-semibold mb-4">{category.category}</h4>
+                                        <ul className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 xl:gap-[30px]">
+                                            {category.skillList.map((skill, index) => (
+                                                <li key={index}>
+                                                    <TooltipProvider delayDuration={100}>
+                                                        <Tooltip>
+                                                            <TooltipTrigger className="w-full h-[150px] bg-[#232329] rounded-xl flex justify-center items-center group">
+                                                                <div className="text-6xl group-hover:text-accent transition-all duration-300">
+                                                                    {skill.icon}
+                                                                </div>
+                                                            </TooltipTrigger>
+                                                            <TooltipContent>
+                                                                <p>{skill.name}</p>
+                                                            </TooltipContent>
+                                                        </Tooltip>
+                                                    </TooltipProvider>
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    </div>
+                                ))}
                             </div>
                         </TabsContent>
+
 
                         {/* about */}
                         <TabsContent
