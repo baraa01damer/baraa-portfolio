@@ -15,31 +15,19 @@ import { SiTailwindcss, SiNextdotjs } from "react-icons/si";
 // about data
 const about = {
     title: "About me",
-    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+//    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
     info: [
         {
             fieldName: "Name",
             fieldValue: "Baraa Damer",
         },
-        {
-            fieldName: "Phone",
-            fieldValue: "(+1) XXX XXXX",
-        },
-        {
-            fieldName: "Experience",
-            fieldValue: "12+ Years",
-        },
-        {
-            fieldName: "Skype",
-            fieldValue: "skype_username",
-        },
-        {
-            fieldName: "Nationality",
-            fieldValue: "American",
-        },
+//        {
+//            fieldName: "Experience",
+//            fieldValue: "12+ Years",
+//        },
         {
             fieldName: "Email",
-            fieldValue: "@gmail.com",
+            fieldValue: "baraa01damer@gmail.com",
         },
         {
             fieldName: "Freelance",
@@ -56,18 +44,18 @@ const about = {
 const experience = {
     icon: '/assets/resume/badge.svg',
     title: 'My experience',
-    description:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+//    description:
+//        "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
     items: [
         {
-            company: "Tech Solutions Inc.",
-            position: "Full Stack Developer",
-            duration: "2022 - Present",
+            company: "Freelance",
+            position: "Freelance Developer",
+            duration: "Nov. 2024 - Present",
         },
         {
-            company: "Web Design Studio",
-            position: "Front-End Developer Intern",
-            duration: "Summer 2021",
+            company: "Headstarter AI",
+            position: "Software Engineering Fellow",
+            duration: "Summer 2024",
         },
     ],
 };
@@ -76,8 +64,8 @@ const experience = {
 const education = {
     icon: '/assets/resume/cap.svg',
     title: 'My education',
-    description:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+//    description:
+//        "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
     items: [
         {
             institution: "California State University, Fullerton",
@@ -95,8 +83,8 @@ const education = {
 // skills data
 const skills = {
     title: "My skills",
-    description:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+//    description:
+//        "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
     skillList: [
         {
             icon: <FaHtml5 />,
@@ -126,10 +114,10 @@ const skills = {
             icon: <FaNodeJs />,
             name: "node.js",
         },
-        {
-            icon: <FaFigma />,
-            name: "figma",
-        },
+//        {
+//            icon: <FaFigma />,
+//            name: "figma",
+//        },
     ]
 };
 
