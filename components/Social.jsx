@@ -1,12 +1,10 @@
 import Link from "next/link";
 
-import { FaGithub, FaLinkedin, FaYoutube, FaTwitter } from "react-icons/fa";
+import { FaGithub, FaLinkedin } from "react-icons/fa";
 
 const socials = [
     { icon: <FaLinkedin />, path: "https://www.linkedin.com/in/baraadamer/" },
     { icon: <FaGithub />, path: "https://github.com/Baraa01Damer" },
-    // { icon: <FaYoutube />, path: "" },
-    // { icon: <FaTwitter />, path: "" },
 ];
 
 const Social = ({ containterStyles, iconStyles }) => {
@@ -14,7 +12,13 @@ const Social = ({ containterStyles, iconStyles }) => {
         <div className={containterStyles}>
             {socials.map((item, index) => {
                 return (
-                    <Link key={index} href={item.path} className={iconStyles}>
+                    <Link
+                        key={index}
+                        href={item.path}
+                        className={iconStyles}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
                         {item.icon}
                     </Link>
                 );
@@ -23,4 +27,4 @@ const Social = ({ containterStyles, iconStyles }) => {
     );
 };
 
-export default Social
+export default Social;
