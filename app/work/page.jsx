@@ -22,36 +22,43 @@ import WorkSliderBtns from "@/components/WorkSliderBtns";
 const projects = [
     {
         num: '01',
-        category: 'fullstack',
-        title: 'Storify',
+        name: 'Storify',
         description:
             'Inventory management application that allows users to keep track of inventory items by adding or removing items and updating their quantities. Uses Next.js as the frontend framework, Material UI for the UI components, and Firebase as the backend service. ',
-        stack: [{ name: 'Html 5' }, { name: "Css 3" }, { name: "Javascript" }],
+        stack: [{ name: 'JavaScript' }, { name: "Material UI" }, { name: "Firebase" },],
         image: '/assets/work/thumb1.png',
         live: "https://pantry-tracker-tau-five.vercel.app/",
         github: "https://github.com/Baraa01Damer/Storify",
     },
     {
         num: '02',
-        category: 'fullstack',
-        title: 'project 2',
+        name: 'Lambda Chat',
         description:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cupiditate magnam modi.',
+            'Meet Gordon, an AI-Powered chatbot built using Next.js and OpenAI API',
         stack: [{ name: 'Next.js' }, { name: "Tailwind.css" }, { name: "Node.js" }],
         image: '/assets/work/thumb2.png',
-        live: "",
-        github: "",
+        live: "https://lambda-chat-2xzl.vercel.app/",
+        github: "https://github.com/Baraa01Damer/Lambda-Chat",
     },
     {
         num: '03',
-        category: 'frontend',
-        title: 'project 3',
+        name: 'flashcard-saas app',
         description:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cupiditate magnam modi.',
-        stack: [{ name: 'Next.js' }, { name: "Tailwind.css" }],
-        image: '/assets/work/thumb3.png',
+            'A flashcard SaaS. WIP',
+        stack: [{ name: 'Next.js' }, { name: "Clerk" }, { name: "Firebase" }, { name: "OpenAI" }, { name: "Stripe" }],
+        image: '/assets/work/wip.png',
         live: "",
-        github: "",
+        github: "https://github.com/Baraa01Damer/flashcard-saas",
+    },
+    {
+        num: '04',
+        name: 'AI-Powered Translator Browser Extension',
+        description:
+            'WIP',
+        stack: [{ name: 'JavaScript' }, { name: "HTML/CSS" }, { name: "OpenAI API" }],
+        image: '/assets/work/wip.png',
+        live: "",
+        github: "https://github.com/Baraa01Damer/translator-extension",
     },
 ];
 
@@ -81,9 +88,9 @@ const Work = () => {
                             <div className="text-8xl leading-none font-extrabold text-transparent text-outline">
                                 {project.num}
                             </div>
-                            {/* project category */}
+                            {/* project name */}
                             <h2 className="text-[42px] font-bold leading-none text-white group-hover:text-accent transition-all duration-500 capitalize">
-                                {project.category} project
+                                {project.name}
                             </h2>
                             {/* project description */}
                             <p className="text-white/60">{project.description}</p>
@@ -104,7 +111,7 @@ const Work = () => {
                             {/* buttons */}
                             <div className="flex items-center gap-4">
                                 {/* live project button */}
-                                <Link href={project.live}>
+                                <Link href={project.live} target="_blank" rel="noopener noreferrer">
                                     <TooltipProvider delayDuration={100}>
                                         <Tooltip>
                                             <TooltipTrigger className="w-[70px] h-[70px] rounded-full bg-white/5 flex justify-center items-center group">
@@ -117,7 +124,7 @@ const Work = () => {
                                     </TooltipProvider>
                                 </Link>
                                 {/* github project button */}
-                                <Link href={project.github}>
+                                <Link href={project.github} target="_blank" rel="noopener noreferrer">
                                     <TooltipProvider delayDuration={100}>
                                         <Tooltip>
                                             <TooltipTrigger className="w-[70px] h-[70px] rounded-full bg-white/5 flex justify-center items-center group">
