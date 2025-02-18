@@ -1,5 +1,7 @@
 "use client";
 
+import { useState } from "react";
+import emailjs from "emailjs-com";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -15,8 +17,15 @@ import {
 } from "@/components/ui/select";
 
 import { FaClock, FaEnvelope, FaMapMarkerAlt } from "react-icons/fa";
+import { MdEventAvailable } from "react-icons/md";
+import { motion } from "framer-motion";
 
 const info = [
+    {
+        icon: <MdEventAvailable />,
+        title: "Availability",
+        description: "Open to work",
+    },
     {
         icon: <FaEnvelope />,
         title: "Email",
@@ -30,13 +39,54 @@ const info = [
     {
         icon: <FaClock />,
         title: "Time Zone",
-        description: "Pacific Time (PST)",
+        description: "Pacific Time",
     },
 ];
 
-import { motion } from "framer-motion";
-
+// emailjs
 const Contact = () => {
+    const [formData, setFormData] = useState({
+        firstName: "",
+        lastName: "",
+        email: "",
+        phone: "",
+        service: "",
+        message: "",
+    });
+
+    const handleChange = (e) => {
+        setFormData({ ...formData, [e.target.name]: e.target.value });
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        const templateParams = {
+            firstName: formData.firstName,
+            lastName: formData.lastName,
+            email: formData.email,
+            phone: formData.phone || "N/A",
+            service: formData.service || "Not specified",
+            message: formData.message,
+        };
+
+        emailjs
+            .send(
+                process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID,  // Read from .env.local
+                process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID,
+                templateParams,
+                process.env.NEXT_PUBLIC_EMAILJS_USER_ID
+            )
+            .then((response) => {
+                console.log("SUCCESS!", response.status, response.text);
+                alert("Message sent successfully!");
+            })
+            .catch((error) => {
+                console.error("FAILED...", error);
+                alert("Failed to send message.");
+            });
+    };
+
     return (
         <motion.section
             initial={{ opacity: 0 }}
@@ -50,38 +100,40 @@ const Contact = () => {
                 <div className="flex flex-col xl:flex-row gap-[30px]">
                     {/* form */}
                     <div className="xl:w-[54%] order-2 xl:order-none">
-                        <form className="flex flex-col gap-6 p-10 bg-[#27272c] rounded-xl">
+                        <form onSubmit={handleSubmit} className="flex flex-col gap-6 p-10 bg-[#27272c] rounded-xl">
                             <h3 className="text-4xl text-accent">Let's work together</h3>
                             <p className="text-white/60">
-                                Interested in working together? Whether you have a project in mind, need a developer, or just want to connect, feel free to reach out. Let’s build something great!
+                                Interested in working together? Whether you have a project in mind, need a developer, or just want to connect, please feel free to reach out.
                             </p>
                             {/* input */}
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                <Input type="firstname" placeholder="First Name" />
-                                <Input type="lastname" placeholder="Last Name" />
-                                <Input type="email" placeholder="Email" />
-                                <Input type="phone" placeholder="Phone (optional)" />
+                                <Input type="text" name="firstName" placeholder="First Name" onChange={handleChange} />
+                                <Input type="text" name="lastName" placeholder="Last Name" onChange={handleChange} />
+                                <Input type="email" name="email" placeholder="Email" onChange={handleChange} />
+                                <Input type="text" name="phone" placeholder="Phone (optional)" onChange={handleChange} />
                             </div>
                             {/* select */}
-                            <Select>
+                            <Select onValueChange={(value) => setFormData({ ...formData, service: value })}>
                                 <SelectTrigger className="w-full">
                                     <SelectValue placeholder="Select a service" />
                                 </SelectTrigger>
                                 <SelectContent>
                                     <SelectGroup>
                                         <SelectLabel>Select a service</SelectLabel>
-                                        <SelectItem value="est">Freelancing</SelectItem>
-                                        <SelectItem value="cst">Other</SelectItem>
+                                        <SelectItem value="Freelancing">Freelancing</SelectItem>
+                                        <SelectItem value="Other">Other</SelectItem>
                                     </SelectGroup>
                                 </SelectContent>
                             </Select>
                             {/* textarea */}
                             <Textarea
                                 className="h-[200px]"
+                                name="message"
                                 placeholder="Type your message here."
+                                onChange={handleChange}
                             />
                             {/* btn */}
-                            <Button size="md" className="max-w-40">
+                            <Button type="submit" size="md" className="max-w-40">
                                 Send message
                             </Button>
                         </form>
@@ -106,7 +158,7 @@ const Contact = () => {
                     </div>
                 </div>
             </div>
-        </motion.section >
+        </motion.section>
     );
 };
 
