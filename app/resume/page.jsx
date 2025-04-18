@@ -8,7 +8,8 @@ import {
     FaReact,
     FaPython,
     FaStripe,
-    FaSpotify
+    FaSpotify,
+    FaChevronDown
 } from "react-icons/fa";
 
 import {
@@ -60,14 +61,14 @@ const experience = {
     //        "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
     items: [
         {
-            company: "Freelance",
-            position: "Freelance Developer",
-            duration: "Nov. 2024 - Present",
+            company: "STEM Heroes Academy",
+            position: "Software Developer & Instructor",
+            duration: "Jan 2024 - Present",
         },
         {
-            company: "Headstarter AI",
+            company: "Headstarter",
             position: "Software Engineering Fellow",
-            duration: "Summer 2024",
+            duration: "June 2024 - Sep 2024",
         },
     ],
 };
@@ -80,14 +81,17 @@ const education = {
     //        "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
     items: [
         {
-            institution: "Cal State Fullerton",
-            degree: "B.S. Computer Science",
-            duration: "2022 - 2024",
-        },
-        {
-            institution: "Cypress College",
-            degree: "Transfer, Computer Science Major",
-            duration: "2019 - 2022",
+            institution: "CSU Fullerton",
+            degree: "Bachelor of Science in Computer Science",
+            duration: "2024",
+            coursework: [
+                "Artificial Intelligence",
+                "Game Design and Production",
+                "Machine Learning",
+                "Software Development with Open Source Systems",
+                "Web Back-End Engineering",
+                "Web Front-End Engineering"
+            ]
         },
     ],
 };
@@ -203,8 +207,19 @@ import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/comp
 
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { motion } from "framer-motion";
+import { useState } from "react";
 
 const Resume = () => {
+    const [expandedEducation, setExpandedEducation] = useState(null);
+
+    const toggleEducation = (index) => {
+        if (expandedEducation === index) {
+            setExpandedEducation(null);
+        } else {
+            setExpandedEducation(index);
+        }
+    };
+
     return (
         <motion.div
             initial={{ opacity: 0 }}
@@ -266,28 +281,63 @@ const Resume = () => {
                                 <p className="max-w-[600px] text-white/60 mx-auto xl:mx-0">
                                     {education.description}
                                 </p>
-                                <ScrollArea className="h-[400px]">
-                                    <ul className="grid grid-cols-1 lg:grid-cols-2 gap-[30px]">
-                                        {education.items.map((item, index) => {
-                                            return (
-                                                <li
-                                                    key={index}
-                                                    className="bg-[#232329] h-[184px] py-6 px-10 rounded-xl flex flex-col justify-center items-center lg:items-start gap-1"
-                                                >
-                                                    <span className="text-accent">{item.duration}</span>
-                                                    <h3 className="text-xl max-w-[260px] min-h-[60px] text-center lg:text-left">
-                                                        {item.degree}
-                                                    </h3>
-                                                    <div className="flex items-center gap-3">
-                                                        {/* dot */}
-                                                        <span className="w-[6px] h-[6px] rounded-full bg-accent"></span>
-                                                        <p className="text-white/60">{item.institution}</p>
-                                                    </div>
-                                                </li>
-                                            );
-                                        })}
-                                    </ul>
-                                </ScrollArea>
+                                <div className="grid grid-cols-1 lg:grid-cols-2 gap-[30px]">
+                                    <ScrollArea className="h-[400px] w-full rounded-xl">
+                                        <ul className="pr-4">
+                                            {education.items.map((item, index) => {
+                                                return (
+                                                    <li
+                                                        key={index}
+                                                        className="bg-[#232329] py-6 px-10 rounded-xl flex flex-col justify-center items-center lg:items-start gap-1"
+                                                    >
+                                                        <span className="text-accent">{item.duration}</span>
+                                                        <h3 className="text-xl max-w-[260px] min-h-[60px] text-center lg:text-left">
+                                                            {item.degree}
+                                                        </h3>
+                                                        <div className="flex items-center gap-3">
+                                                            <span className="w-[6px] h-[6px] rounded-full bg-accent"></span>
+                                                            <p className="text-white/60">{item.institution}</p>
+                                                        </div>
+                                                        {item.coursework && (
+                                                            <>
+                                                                <button
+                                                                    onClick={() => toggleEducation(index)}
+                                                                    className="mt-2 flex items-center gap-2 text-accent hover:text-accent/80 transition-colors"
+                                                                >
+                                                                    <span>Relevant Coursework</span>
+                                                                    <motion.div
+                                                                        animate={{ rotate: expandedEducation === index ? 180 : 0 }}
+                                                                        transition={{ duration: 0.2 }}
+                                                                    >
+                                                                        <FaChevronDown className="text-sm" />
+                                                                    </motion.div>
+                                                                </button>
+                                                                <motion.div
+                                                                    initial={{ height: 0, opacity: 0 }}
+                                                                    animate={{
+                                                                        height: expandedEducation === index ? "auto" : 0,
+                                                                        opacity: expandedEducation === index ? 1 : 0,
+                                                                    }}
+                                                                    transition={{ duration: 0.3, ease: "easeInOut" }}
+                                                                    className="overflow-hidden w-full"
+                                                                >
+                                                                    <div className="pt-4 grid grid-cols-1 gap-2 text-sm text-white/80">
+                                                                        {item.coursework.map((course, courseIndex) => (
+                                                                            <div key={courseIndex} className="flex items-center gap-2 text-left w-full">
+                                                                                <span className="w-[4px] h-[4px] rounded-full bg-accent flex-shrink-0"></span>
+                                                                                <span className="text-left">{course}</span>
+                                                                            </div>
+                                                                        ))}
+                                                                    </div>
+                                                                </motion.div>
+                                                            </>
+                                                        )}
+                                                    </li>
+                                                );
+                                            })}
+                                        </ul>
+                                    </ScrollArea>
+                                </div>
                             </div>
                         </TabsContent>
 

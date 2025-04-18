@@ -13,7 +13,10 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata = {
-  title: "Baraa's Website",
+  title: {
+    default: "Baraa's Website",
+    template: "%s | Baraa's Website"
+  },
   description: "Baraa Damer's Portfolio Website",
 };
 
