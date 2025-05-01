@@ -82,15 +82,37 @@ const education = {
     items: [
         {
             institution: "CSU Fullerton",
-            degree: "Bachelor of Science in Computer Science",
-            duration: "2024",
+            degree: "B.S. in Computer Science",
+            duration: "Class of 2024",
             coursework: [
-                "Artificial Intelligence",
-                "Game Design and Production",
-                "Machine Learning",
-                "Software Development with Open Source Systems",
-                "Web Back-End Engineering",
-                "Web Front-End Engineering"
+                {
+                    name: "Artificial Intelligence",
+                    url: "https://catalog.fullerton.edu/preview_course.php?catoid=91&coid=575067"
+                },
+                {
+                    name: "Game Design and Production",
+                    url: "https://catalog.fullerton.edu/preview_course.php?catoid=80&coid=538070"
+                },
+                {
+                    name: "Machine Learning",
+                    url: "https://catalog.fullerton.edu/preview_course.php?catoid=91&coid=575068"
+                },
+                {
+                    name: "Network Security",
+                    url: "https://catalog.nocccd.edu/search/?edition=2022-2023&archivepath=%2Farchive%2F2022-2023&caturl=%2Fcypress-college&search=CIS+195"
+                },
+                {
+                    name: "Software Development with Open Source Systems",
+                    url: "https://catalog.fullerton.edu/preview_course.php?catoid=80&coid=538063"
+                },
+                {
+                    name: "Web Back-End Engineering",
+                    url: "https://catalog.fullerton.edu/preview_course.php?catoid=91&coid=575066"
+                },
+                {
+                    name: "Web Front-End Engineering",
+                    url: "https://catalog.fullerton.edu/preview_course.php?catoid=80&coid=540712"
+                }
             ]
         },
     ],
@@ -325,7 +347,14 @@ const Resume = () => {
                                                                         {item.coursework.map((course, courseIndex) => (
                                                                             <div key={courseIndex} className="flex items-center gap-2 text-left w-full">
                                                                                 <span className="w-[4px] h-[4px] rounded-full bg-accent flex-shrink-0"></span>
-                                                                                <span className="text-left">{course}</span>
+                                                                                <a 
+                                                                                    href={course.url}
+                                                                                    target="_blank"
+                                                                                    rel="noopener noreferrer"
+                                                                                    className="text-left hover:text-accent transition-colors"
+                                                                                >
+                                                                                    {course.name}
+                                                                                </a>
                                                                             </div>
                                                                         ))}
                                                                     </div>

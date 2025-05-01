@@ -4,16 +4,17 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { CiMenuFries } from "react-icons/ci";
+import React from "react";
 
 const links = [
     {
         name: 'home',
         path: '/',
     },
-//    {
-//        name: 'services',
-//        path: '/services',
-//    },
+    //    {
+    //        name: 'services',
+    //        path: '/services',
+    //    },
     {
         name: 'resume',
         path: '/resume',
@@ -30,15 +31,17 @@ const links = [
 
 const MobileNav = () => {
     const pathname = usePathname();
+    const [isOpen, setIsOpen] = React.useState(false);
+
     return (
-        <Sheet>
+        <Sheet open={isOpen} onOpenChange={setIsOpen}>
             <SheetTrigger className="flex justify-center items-center">
                 <CiMenuFries className="text-[32px] text-accent" />
             </SheetTrigger>
             <SheetContent className="flex flex-col">
                 {/* logo */}
                 <div className="mt-32 mb-40 text-center text-2xl">
-                    <Link href="/">
+                    <Link href="/" onClick={() => setIsOpen(false)}>
                         <h1 className="text-4xl font-semibold">
                             Baraa<span className="text-accent">.</span>
                         </h1>
@@ -51,6 +54,7 @@ const MobileNav = () => {
                             <Link
                                 href={link.path}
                                 key={index}
+                                onClick={() => setIsOpen(false)}
                                 className={`${link.path === pathname &&
                                     "text-accent border-b-2 border-accent"
                                     } text-xl capitalize hover:text-accent transition-all`}

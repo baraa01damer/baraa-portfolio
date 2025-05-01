@@ -22,43 +22,23 @@ import WorkSliderBtns from "@/components/WorkSliderBtns";
 const projects = [
     {
         num: '01',
-        name: 'Storify',
+        name: 'STEM Heroes Academy Inventory Management System',
         description:
-            'Inventory management application that allows users to keep track of inventory items by adding or removing items and updating their quantities. Uses Next.js as the frontend framework, Material UI for the UI components, and Firebase as the backend service. ',
-        stack: [{ name: 'JavaScript' }, { name: "Material UI" }, { name: "Firebase" },],
+            'The STEM Heroes Academy Inventory Management System is a solution I developed to address inventory tracking challenges at my workplace. After noticing inefficiencies in how we managed our resources and supplies, I built this web application to streamline our inventory process. Using Next.js and Firebase, the system provides a simple yet effective way for my colleagues to track, manage, and monitor our workplace inventory in real-time. It\'s a practical solution that grew from a real workplace need, transforming our manual inventory tracking into a more efficient, digital system.',
+        stack: [{ name: 'Next.js' }, { name: "React" }, { name: "Firebase" }, { name: "Material UI" }, { name: "Clerk" }],
         image: '/assets/work/thumb1.png',
-        live: "https://pantry-tracker-tau-five.vercel.app/",
-        github: "https://github.com/Baraa01Damer/Storify",
+        live: "https://stem-inventory.vercel.app/",
+        github: "https://github.com/Baraa01Damer/stem_inventory",
     },
     {
         num: '02',
-        name: 'Lambda Chat',
+        name: 'Sahabi',
         description:
-            'Meet Gordon, an AI-Powered chatbot built using Next.js and OpenAI API',
-        stack: [{ name: 'Next.js' }, { name: "Tailwind.css" }, { name: "Node.js" }],
+            'Sahabi is a modern, iMessage-inspired AI chatbot application built with Next.js and Material-UI that features real-time chat with GPT-4, voice input, image analysis capabilities, all wrapped in a sleek, mobile-first interface.',
+        stack: [{ name: 'JavaScript' }, { name: "Next.js" }, { name: "React" }, { name: "OpenAI" }, { name: "Material UI" }],
         image: '/assets/work/thumb2.png',
-        live: "https://lambda-chat-2xzl.vercel.app/",
-        github: "https://github.com/Baraa01Damer/Lambda-Chat",
-    },
-    {
-        num: '03',
-        name: 'flashcard-saas app',
-        description:
-            'A flashcard SaaS. WIP',
-        stack: [{ name: 'Next.js' }, { name: "Clerk" }, { name: "Firebase" }, { name: "OpenAI" }, { name: "Stripe" }],
-        image: '/assets/work/wip.png',
-        live: "",
-        github: "https://github.com/Baraa01Damer/flashcard-saas",
-    },
-    {
-        num: '04',
-        name: 'AI-Powered Translator Browser Extension',
-        description:
-            'WIP',
-        stack: [{ name: 'JavaScript' }, { name: "HTML/CSS" }, { name: "OpenAI API" }],
-        image: '/assets/work/wip.png',
-        live: "",
-        github: "https://github.com/Baraa01Damer/translator-extension",
+        live: "https://sahabi.vercel.app/",
+        github: "https://github.com/Baraa01Damer/Sahabi",
     },
 ];
 
@@ -95,7 +75,7 @@ const Work = () => {
                             {/* project description */}
                             <p className="text-white/60">{project.description}</p>
                             {/* stack */}
-                            <ul className="flex gap-4">
+                            <ul className="flex flex-wrap gap-4">
                                 {project.stack.map((item, index) => {
                                     return (
                                         <li key={index} className="text-xl text-accent">

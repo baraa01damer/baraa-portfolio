@@ -38,7 +38,7 @@ const Stats = () => {
             text: "Projects completed",
         },
         {
-            num: commitCount || 100, // Fallback to this number if the API fails
+            num: commitCount || 172, // Fallback to this number if the API fails
             text: "Code commits",
         },
     ];
