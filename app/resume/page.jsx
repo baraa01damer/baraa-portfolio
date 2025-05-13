@@ -62,8 +62,8 @@ const experience = {
     items: [
         {
             company: "STEM Heroes Academy",
-            position: "Software Developer & Instructor",
-            duration: "Jan 2024 - Present",
+            position: "Instructor & Software Developer",
+            duration: "Jan 2025 - Present",
         },
         {
             company: "Headstarter",
@@ -347,7 +347,7 @@ const Resume = () => {
                                                                         {item.coursework.map((course, courseIndex) => (
                                                                             <div key={courseIndex} className="flex items-center gap-2 text-left w-full">
                                                                                 <span className="w-[4px] h-[4px] rounded-full bg-accent flex-shrink-0"></span>
-                                                                                <a 
+                                                                                <a
                                                                                     href={course.url}
                                                                                     target="_blank"
                                                                                     rel="noopener noreferrer"
