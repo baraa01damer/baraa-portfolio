@@ -62,7 +62,7 @@ const experience = {
     items: [
         {
             company: "STEM Heroes Academy",
-            position: "Instructor & Software Developer",
+            position: "Software Developer & Robotics Programming Instructor",
             duration: "Jan 2025 - Present",
         },
         {
@@ -83,7 +83,7 @@ const education = {
         {
             institution: "CSU Fullerton",
             degree: "B.S. in Computer Science",
-            duration: "Class of 2024",
+            duration: "May 2025",
             coursework: [
                 {
                     name: "Artificial Intelligence",
@@ -263,9 +263,9 @@ const Resume = () => {
                     </TabsList>
 
                     {/* content */}
-                    <div className="min-h-[70vh] w-full">
+                    <ScrollArea className="h-[80vh] w-full">
                         {/* experience */}
-                        <TabsContent value="experience" className="w-full">
+                        <TabsContent value="experience" className="w-full pr-4">
                             <div className="flex flex-col gap-[30px] text-center xl:text-left">
                                 <h3 className="text-4xl font-bold">{experience.title}</h3>
                                 <p className="max-w-[600px] text-white/60 mx-auto xl:mx-0">
@@ -277,14 +277,13 @@ const Resume = () => {
                                             return (
                                                 <li
                                                     key={index}
-                                                    className="bg-[#232329] h-[184px] py-6 px-10 rounded-xl flex flex-col justify-center items-center lg:items-start gap-1"
+                                                    className="bg-[#232329] min-h-[184px] py-6 px-10 rounded-xl flex flex-col justify-between text-left gap-2"
                                                 >
                                                     <span className="text-accent">{item.duration}</span>
-                                                    <h3 className="text-xl max-w-[260px] min-h-[60px] text-center lg:text-left">
+                                                    <h3 className="text-xl font-mono break-words">
                                                         {item.position}
                                                     </h3>
-                                                    <div className="flex items-center gap-3">
-                                                        {/* dot */}
+                                                    <div className="flex items-center gap-3 mt-2">
                                                         <span className="w-[6px] h-[6px] rounded-full bg-accent"></span>
                                                         <p className="text-white/60">{item.company}</p>
                                                     </div>
@@ -297,7 +296,7 @@ const Resume = () => {
                         </TabsContent>
 
                         {/* education */}
-                        <TabsContent value="education" className="w-full">
+                        <TabsContent value="education" className="w-full pr-4">
                             <div className="flex flex-col gap-[30px] text-center xl:text-left">
                                 <h3 className="text-4xl font-bold">{education.title}</h3>
                                 <p className="max-w-[600px] text-white/60 mx-auto xl:mx-0">
@@ -371,7 +370,7 @@ const Resume = () => {
                         </TabsContent>
 
                         {/* skills */}
-                        <TabsContent value="skills" className="w-full h-full">
+                        <TabsContent value="skills" className="w-full h-full pr-4">
                             <div className="flex flex-col gap-[30px]">
                                 <div className="flex flex-col gap-[30px] text-center xl:text-left">
                                     <h3 className="text-4xl font-bold">{skills.title}</h3>
@@ -408,10 +407,7 @@ const Resume = () => {
 
 
                         {/* about */}
-                        <TabsContent
-                            value="about"
-                            className="w-full text-center xl:text-left"
-                        >
+                        <TabsContent value="about" className="w-full text-center xl:text-left pr-4">
                             <div className="flex flex-col gap-[30px]">
                                 <h3 className="text-4xl font-bold">{about.title}</h3>
                                 <p className="max-w-[600px] text-white/60 mx-auto xl:mx-0">
@@ -429,7 +425,7 @@ const Resume = () => {
                                 </ul>
                             </div>
                         </TabsContent>
-                    </div>
+                    </ScrollArea>
                 </Tabs>
             </div>
         </motion.div>
